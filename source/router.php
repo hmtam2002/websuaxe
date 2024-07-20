@@ -57,49 +57,27 @@ switch ($url)
         break;
     default:
         $slug = ltrim($url, '/');
-        $sql = "SELECT products.*, authors.author_name
-            FROM products
-            INNER JOIN authors ON products.author_id = authors.id
-            WHERE products.slug = '$slug'";
-        $product_detail = $db->oneRaw($sql);
-        if (!empty($product_detail))
-        {
-            if (file_exists(_PATH . '/module/book/detail.php'))
-            {
-                require_once _PATH . '/module/book/detail.php';
-                $title_page = $product_detail['title'];
-                $noidung = ob_get_clean();
-                break;
-            }
-        }
-        $sql = "SELECT products.*, origins.country_name, brands.brand_name
-                FROM products
-                INNER JOIN origins ON products.origin_id = origins.id
-                INNER JOIN brands ON products.brand_id = brands.id
-                WHERE products.slug = '$slug'";
-        $sanpham_detail = $db->oneRaw($sql);
 
-        if (!empty($sanpham_detail))
+        $new = $db->oneRaw("SELECT * FROM new WHERE slug = '$slug'");
+        if (!empty($new))
         {
-            if (file_exists(_PATH . '/module/stationery/detail.php'))
-            {
-                require_once _PATH . '/module/stationery/detail.php';
-                $title_page = $sanpham_detail['product_name'];
-                $noidung = ob_get_clean();
-                break;
-            }
+            $title = $new['title'];
+            require_once TEMPLATE . '/new/new.php';
+            $noidung = ob_get_clean();
+            break;
         }
-        $new_detail = $db->oneRaw("SELECT * FROM news WHERE slug = '$slug'");
-        if (!empty($new_detail))
+
+        $new_cat = $db->oneRaw("SELECT * FROM new_cat WHERE slug = '$slug'");
+        if (!empty($new_cat))
         {
-            if (file_exists(_PATH . '/module/new/detail.php'))
-            {
-                require_once _PATH . '/module/new/detail.php';
-                $title_page = $new_detail['title'];
-                $noidung = ob_get_clean();
-                break;
-            }
+            $title = $new_cat['title'];
+            require_once TEMPLATE . '/new/new.php';
+            $noidung = ob_get_clean();
+            break;
         }
+
+
+
         $noidung = '<span>Đường dẫn rỗng ' . $url . '</span>';
         break;
 }

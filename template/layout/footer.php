@@ -6,21 +6,24 @@
                     <div class="footer-news">
                         <h2 class="title-footer-contact">SỬA XE THÀNH ĐẠT</h2>
                         <div class="info-footer">
-                            <p><span style="font-size:16px;"><strong>Địa chỉ: 167 Gò Dầu, Phường Tân Quý, Q. Tân
-                                        Phú, TP.HCM</strong></span></p>
+                            <p><span style="font-size:16px;"><strong>Địa chỉ:
+                                        <?= $setting_info[0]['setting_value'] ?></strong></span></p>
 
                             <p><span style="font-size:16px;"><strong>Email:
-                                        suaxethanhdathcm@gmail.com</strong></span></p>
+                                        <?= $setting_info[7]['setting_value'] ?></strong></span></p>
 
                             <p><span style="font-size:16px;"><strong>Tel: <span
-                                            style="color:#ff0000;">0909.332.845</span> (Anh Bảy)</strong></span></p>
+                                            style="color:#ff0000;"><?= $setting_info[1]['setting_value'] ?></span></strong></span>
+                            </p>
 
-                            <p><span style="font-size:16px;"><strong>Zalo: <a href="https://zalo.me/0909332845"
+                            <p><span style="font-size:16px;"><strong>Zalo: <a
+                                            href="https://zalo.me/<?= $setting_info[4]['setting_value'] ?>"
                                             target="_blank"><span
-                                                style="color:#ff0000;">0909332845</span></a></strong></span></p>
+                                                style="color:#ff0000;"><?= $setting_info[4]['setting_value'] ?></span></a></strong></span>
+                            </p>
 
                             <p><span style="font-size:16px;"><strong>Website:<a href="https://suaxethanhdat.com/"
-                                            target="_blank"><span style="color:#ffffff;">suaxethanhdat.com
+                                            target="_blank"><span style="color:#ffffff;"><?= $_SERVER['HTTP_HOST'] ?>
                                             </span></a></strong></span></p>
 
                             <p> </p>
@@ -31,12 +34,13 @@
                     <div class="footer-news">
                         <h2 class="title-footer">Chính sách bán hàng</h2>
                         <ul class="footer-ul">
-                            <li><a class="text-decoration-none" href="chinh-sach-ben-hang"
-                                    title="CHÍNH SÁCH BỒI THƯỜNG">CHÍNH SÁCH BỒI THƯỜNG</a></li>
-                            <li><a class="text-decoration-none" href="chinh-sach-bao-hang"
-                                    title="Chính sách bảo hành">Chính sách bảo hành</a></li>
-                            <li><a class="text-decoration-none" href="chinh-sach-ho-tro" title="Chính sách hỗ trợ">Chính
-                                    sách hỗ trợ</a></li>
+                            <?php
+                            $policy_list = $db->getRaw("SELECT * FROM new WHERE type = 'policy'");
+                            foreach ($policy_list as $item):
+                                ?>
+                            <li><a class="text-decoration-none" href="<?= $item['slug'] ?>"
+                                    title="<?= $item['title'] ?>"><?= $item['title'] ?></a></li>
+                            <?php endforeach; ?>
                         </ul>
                     </div>
                 </div>

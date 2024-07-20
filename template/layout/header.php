@@ -58,12 +58,12 @@
                 </li>
                 <li><a class="transition text-menu " href="tuyen-dung" title="Tuyển dụng">Tuyển dụng</a>
                 </li>
-                <li><a class="transition text-menu " href="thu-vien-anh" title="Thư viện ảnh">Thư viện ảnh</a>
+                <li><a class="transition text-menu " href="#" title="Thư viện ảnh">Thư viện ảnh</a>
                 </li>
-                <li><a class="transition text-menu " href="video" title="Video">Video</a>
+                <li><a class="transition text-menu " href="#" title="Video">Video</a>
                 </li>
 
-                <li><a class="transition text-menu " href="lien-he" title="Liên hệ">Liên hệ</a></li>
+                <li><a class="transition text-menu " href="#" title="Liên hệ">Liên hệ</a></li>
             </ul>
         </div>
         <div class="clear"></div>
