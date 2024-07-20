@@ -1,5 +1,4 @@
 <?php
-
 $listNews = $db->getRaw("SELECT new.*, new_cat.title AS new_cat_title
                          FROM new
                          JOIN new_cat 

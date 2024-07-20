@@ -64,7 +64,7 @@
                     </ul>
                 </div>
             </li> -->
-            <?php $baiviet = $com == 'news' || $com == 'cat' || $com = 'service'; ?>
+            <?php $baiviet = $com == 'news' || $com == 'cat' || $com == 'policy'; ?>
             <li class="nav-item">
                 <a class="nav-link d-flex justify-content-between align-items-center <?= !$baiviet ? 'collapsed' : '' ?>"
                     data-bs-toggle="collapse" href="#submenuBaiviet" role="button"
@@ -94,8 +94,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center <?= $com == 'service' ? 'active' : '' ?>"
-                                href="?com=service&act=list">
+                            <a class="nav-link d-flex align-items-center <?= $com == 'policy' ? 'active' : '' ?>"
+                                href="?com=policy&act=list">
                                 <i class="bi bi-file-earmark-text me-2"></i> Chính sách
                             </a>
                         </li>

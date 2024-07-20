@@ -32,8 +32,6 @@ $func = new func();
 
 
 
-
-
 if (!empty($_GET['com']))
 {
     if (is_string($_GET['com']))
@@ -61,11 +59,11 @@ if ($ad->isLogin())
     {
         $func->redirect('index.php?com=user&act=login');
     }
-
 }
 
 
 ?>
+
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -189,6 +187,5 @@ if ($ad->isLogin())
     });
     </script>
 </body>
-
 
 </html>
