@@ -10,7 +10,7 @@
         <?php endforeach; ?>
     </div>
 </div>
-<!-- tieu chi -->
+<!-- main -->
 <div id="main" class="wrap-main">
     <section id="criteria" class="d-none d-lg-block">
         <div class="maxwidth">
@@ -73,7 +73,6 @@
     <section id="gioithieu">
         <div class="maxwidth">
             <div class="row">
-
                 <div class="col-md-6 col-sm-5" data-aos="fade-right" data-aos-easing="ease-in-out"
                     data-aos-duration="1000">
                     <div class="info-about">
@@ -206,7 +205,6 @@
             </div>
         </div>
     </section>
-
     <section id="why">
         <div class="maxwidth">
             <div class="title-main text-white">

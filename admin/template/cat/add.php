@@ -1,12 +1,3 @@
-<?php
-$filterAll = $func->filter();
-$id = $filterAll['id'];
-
-
-$cat_info = $db->oneRaw("SELECT * FROM new_cat WHERE id = '$id'");
-?>
-
-
 <main id="content" class="col-md-9 ms-auto col-lg-10 px-md-4 py-4 overflow-auto">
     <p class="text-center fs-4 fw-bold">Danh mục cấp 1</p>
     <div class="container">
@@ -21,13 +12,11 @@ $cat_info = $db->oneRaw("SELECT * FROM new_cat WHERE id = '$id'");
                         <div class="form-group mb-3">
                             <label for="slugInput" id="slugLabel" class="fw-bold form-label">Đường dẫn mẫu:
                                 localhost <span>êfè</span> </label>
-                            <input name="slug" id="slugInput" class="form-control" placeholder="Đường dẫn"
-                                value="<?= $cat_info['slug'] ?>">
+                            <input name="slug" id="slugInput" class="form-control" placeholder="Đường dẫn">
                         </div>
                         <div class="form-group mg-form mb-3">
                             <label for="title" class="form-label fw-bold">Tiêu đề:</label>
-                            <input id="title" name="title" class="form-control" placeholder="Tiêu đề"
-                                value="<?= $cat_info['title'] ?>">
+                            <input id="title" name="title" class="form-control" placeholder="Tiêu đề">
                         </div>
                     </div>
                 </div>

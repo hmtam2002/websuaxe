@@ -20,6 +20,7 @@ $smg_type = getFlashData('smg_type');
         <thead>
             <th>STT</th>
             <th>Hình</th>
+            <th width="5%">Sửa</th>
         </thead>
         <tbody>
             <?php
@@ -34,6 +35,11 @@ $smg_type = getFlashData('smg_type');
                     <a href="?com=banner&act=edit&id=<?= $item['id'] ?>">
                         <img style="max-width: 400px;" src="../assets/images/banner/<?= $item['image'] ?>"
                             alt="Ảnh xem trước">
+                    </a>
+                </td>
+                <td>
+                    <a href="?com=banner&act=edit&id=<?= $item['id'] ?>" class="btn btn-warning btn-sm">
+                        <i class="fa-solid fa-pen-to-square"></i>
                     </a>
                 </td>
             </tr>

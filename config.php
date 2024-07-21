@@ -39,8 +39,11 @@ class DatabaseConfig
     private $username = "root";
     private $password = "";
     private $database = "websuaxe";
+
     public function getConnection()
     {
-        return new mysqli($this->servername, $this->username, $this->password, $this->database);
+        $conn = new mysqli($this->servername, $this->username, $this->password, $this->database);
+        $conn->set_charset("utf8");
+        return $conn;
     }
 }

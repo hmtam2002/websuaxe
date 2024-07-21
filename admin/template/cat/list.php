@@ -10,17 +10,7 @@ $smg_type = getFlashData('smg_type');
 
 ?>
 <main id="content" class="col-md-9 ms-auto col-lg-10 px-md-4 py-4">
-    <!-- <nav aria-label="breadcrumb">
-        <ol class="breadcrumb bg-light p-3 rounded-3">
-            <li class="breadcrumb-item"><a href="?cmd=home&act=dashboard">Trang chủ</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Bài viết</li>
-        </ol>
-    </nav> -->
-    <!-- <div class="btn-group mb-3">
-        <a href="?cmd=new&act=list" class="btn btn-secondary">Quản lý</a>
-        <a href="?cmd=new&act=add" class="btn btn-success">Thêm mới</a>
-    </div> -->
-    <a href="?com=new&act=add" class="btn btn-success mb-4">Thêm mục</a>
+    <a href="?com=cat&act=add" class="btn btn-success mb-4">Thêm mục</a>
     <?php if (!empty($smg))
     {
         $func->getSmg($smg, $smg_type);
@@ -41,18 +31,18 @@ $smg_type = getFlashData('smg_type');
             <tr>
                 <td><?= $dem++ ?></td>
                 <td>
-                    <a href="?cmd=new&act=edit&id=<?= $item['id'] ?>" class="text-decoration-none text-dark">
+                    <a href="?com=cat&act=edit&id=<?= $item['id'] ?>" class="text-decoration-none text-dark">
                         <?= $item['title'] ?>
                     </a>
                 </td>
                 <td>
-                    <a href="?cmd=new&act=edit&id=<?= $item['id'] ?>" class="btn btn-success btn-sm"
+                    <a href="?com=cat&act=edit&id=<?= $item['id'] ?>" class="btn btn-success btn-sm"
                         class="btn btn-warning btn-sm">
                         <i class="fa-solid fa-pen-to-square"></i>
                     </a>
                 </td>
                 <td>
-                    <a href="?cmd=new&act=delete&id=<?= $item['id'] ?>" data_id="<?= $item['id'] ?>"
+                    <a href="?com=cat&act=delete&id=<?= $item['id'] ?>" data_id="<?= $item['id'] ?>"
                         class="btn btn-danger btn-sm btn-delete">
                         <i class="fa-solid fa-trash"></i>
                     </a>

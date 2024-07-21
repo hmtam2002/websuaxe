@@ -71,7 +71,7 @@ switch ($url)
         if (!empty($new_cat))
         {
             $title = $new_cat['title'];
-            require_once TEMPLATE . '/new/new.php';
+            require_once TEMPLATE . '/new/list.php';
             $noidung = ob_get_clean();
             break;
         }
