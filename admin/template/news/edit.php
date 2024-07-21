@@ -1,5 +1,4 @@
 <?php
-
 if ($func->isPOST())
 {
     $filterAll = $func->filter();
@@ -7,8 +6,9 @@ if ($func->isPOST())
     $data_update = [
         'slug' => $filterAll['slug'],
         'title' => $filterAll['title'],
-        'description' => $filterAll['description'],
-        'content' => $filterAll['content'],
+        'description' => $_POST['description'],
+        'content' => $_POST['content'],
+        'type_id' => $filterAll['type_id']
     ];
     if ($db->update('new', $data_update, "id = '$id'"))
     {
@@ -59,14 +59,14 @@ $smg_type = getFlashData('smg_type');
                         </div>
                         <div class="form-group mg-form">
                             <label class="form-label fw-bold">Nội dung:</label>
-                            <textarea name="description" id="description" class="form-control"
+                            <textarea name="content" id="description" class="form-control"
                                 placeholder="Mô tả"><?= $new_info['content'] ?></textarea>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="mb-3">
                             <label for="" class="form-label fw-bold">Danh mục cấp 1:</label>
-                            <select class="form-select" name="cat_id">
+                            <select class="form-select" name="type_id">
                                 <?php
                                 $cat_list = $db->getRaw('SELECT * FROM new_cat');
                                 foreach ($cat_list as $item):

@@ -57,7 +57,7 @@ $smg_type = getFlashData('smg_type');
                     </a>
                 </td>
                 <td>
-                    <a href="?com=new&act=delete&id=<?= $item['id'] ?>" data_id=" <?= $item['id'] ?>"
+                    <a href="?com=news&act=delete&id=<?= $item['id'] ?>" data_id=" <?= $item['id'] ?>"
                         class="btn btn-danger btn-sm btn-delete">
                         <i class="fa-solid fa-trash"></i>
                     </a>

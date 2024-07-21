@@ -6,12 +6,11 @@ if ($func->isPOST())
     $data_insert = [
         'slug' => $filterAll['slug'],
         'title' => $filterAll['title'],
-        'content' => $_POST['description'],
+        'content' => $_POST['content'],
+        'description' => $_POST['description'],
         'type_id' => $filterAll['cat_id'],
         'create_at' => date('Y-m-d H:i:s')
     ];
-
-
     // $image = $func->upload('imageUpload', 'news');
 
     // if ($data_insert['image'] === 'noimage.jpg')
@@ -27,7 +26,7 @@ if ($func->isPOST())
     {
         setFlashData('smg', 'Thêm bài thành công');
         setFlashData('smg_type', 'success');
-        // $func->redirect('?com=news&act=list');
+        $func->redirect("?com=news&act=list");
     } else
     {
         setFlashData('smg', 'Thêm bài không thành công');
@@ -69,7 +68,7 @@ $smg_type = getFlashData('smg_type');
                         </div>
                         <div class="form-group mg-form">
                             <label class="form-label fw-bold">Nội dung:</label>
-                            <textarea name="description" id="description" class="form-control"
+                            <textarea name="content" id="description" class="form-control"
                                 placeholder="Mô tả"></textarea>
                         </div>
                     </div>
@@ -96,9 +95,7 @@ $smg_type = getFlashData('smg_type');
                         </div> -->
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary mt-2">
-                    Lưu
-                </button>
+                <button type="submit" class="btn btn-primary mt-2">Lưu</button>
             </form>
         </div>
     </div>
