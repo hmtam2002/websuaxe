@@ -1,8 +1,30 @@
 <?php
+if ($func->isPOST())
+{
+    $filterAll = $func->filter();
+    $id = $filterAll['id'];
+    $data_update = [
+        'slug' => $filterAll['slug'],
+        'title' => $filterAll['title']
+    ];
+    if ($db->update('new_cat', $data_update, "id = '$id'"))
+    {
+        setFlashData('smg', 'Cập nhật thành công');
+        setFlashData('smg_type', 'success');
+    } else
+    {
+        setFlashData('smg', 'Cập nhật thất bại ');
+        setFlashData('smg_type', 'danger');
+    }
+}
+
+
+$smg = getFlashData('smg');
+$smg_type = getFlashData('smg_type');
+
+
 $filterAll = $func->filter();
 $id = $filterAll['id'];
-
-
 $cat_info = $db->oneRaw("SELECT * FROM new_cat WHERE id = '$id'");
 ?>
 
@@ -31,6 +53,7 @@ $cat_info = $db->oneRaw("SELECT * FROM new_cat WHERE id = '$id'");
                         </div>
                     </div>
                 </div>
+                <input type="hidden" name="id" value="<?= $id ?>">
                 <button type="submit" class="btn btn-primary mt-2">
                     Lưu
                 </button>

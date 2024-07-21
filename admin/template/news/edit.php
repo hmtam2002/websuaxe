@@ -1,41 +1,32 @@
 <?php
+
 if ($func->isPOST())
 {
     $filterAll = $func->filter();
-    //xử lý insert
-    $data_insert = [
+    $id = $filterAll['id'];
+    $data_update = [
         'slug' => $filterAll['slug'],
         'title' => $filterAll['title'],
-        'content' => $_POST['description'],
-        'type_id' => $filterAll['cat_id'],
-        'create_at' => date('Y-m-d H:i:s')
+        'description' => $filterAll['description'],
+        'content' => $filterAll['content'],
     ];
-
-
-    // $image = $func->upload('imageUpload', 'news');
-
-    // if ($data_insert['image'] === 'noimage.jpg')
-    // {
-    //     $data_insert['image'] = $image;
-    // }
-    // echo '<pre>';
-    // print_r($data_insert);
-    // echo '</pre>';
-    // exit();
-    $insertStatus = $db->insert('new', $data_insert);
-    if ($insertStatus)
+    if ($db->update('new', $data_update, "id = '$id'"))
     {
-        setFlashData('smg', 'Thêm bài thành công');
+        setFlashData('smg', 'Cập nhật thành công');
         setFlashData('smg_type', 'success');
-        // $func->redirect('?com=news&act=list');
     } else
     {
-        setFlashData('smg', 'Thêm bài không thành công');
+        setFlashData('smg', 'Cập nhật thất bại ');
         setFlashData('smg_type', 'danger');
     }
 }
 
 
+
+
+$filterAll = $func->filter();
+$id = $filterAll['id'];
+$new_info = $db->oneRaw("SELECT * FROM new WHERE id = '$id'");
 $smg = getFlashData('smg');
 $smg_type = getFlashData('smg_type');
 ?>
@@ -53,24 +44,23 @@ $smg_type = getFlashData('smg_type');
                         <div class="form-group mb-3">
                             <label for="slugInput" id="slugLabel" class="fw-bold form-label">Đường dẫn mẫu:
                                 localhost <span>êfè</span> </label>
-                            <input name="slug" id="slugInput" class="form-control" placeholder="Đường dẫn">
-                            <?php
-                            //echo $f->formError('slug', '<span class="error">', '</span>', $errors);
-                            ?>
+                            <input name="slug" id="slugInput" class="form-control" placeholder="Đường dẫn"
+                                value="<?= $new_info['slug'] ?>">
                         </div>
                         <div class="form-group mg-form mb-3">
                             <label for="title" class="form-label fw-bold">Tiêu đề:</label>
-                            <input id="title" name="title" class="form-control" placeholder="Tiêu đề">
+                            <input id="title" name="title" class="form-control" placeholder="Tiêu đề"
+                                value="<?= $new_info['title'] ?>">
                         </div>
                         <div class="mb-3">
                             <label for="mota" class="form-label fw-bold">Mô tả</label>
                             <textarea class="form-control" id="mota" name="description"
-                                rows="3"><?= $gioithieu['description'] ?></textarea>
+                                rows="3"><?= $new_info['description'] ?></textarea>
                         </div>
                         <div class="form-group mg-form">
                             <label class="form-label fw-bold">Nội dung:</label>
                             <textarea name="description" id="description" class="form-control"
-                                placeholder="Mô tả"></textarea>
+                                placeholder="Mô tả"><?= $new_info['content'] ?></textarea>
                         </div>
                     </div>
                     <div class="col-sm-4">
@@ -81,7 +71,10 @@ $smg_type = getFlashData('smg_type');
                                 $cat_list = $db->getRaw('SELECT * FROM new_cat');
                                 foreach ($cat_list as $item):
                                     ?>
-                                <option value="<?= $item['id'] ?>"><?= $item['title'] ?></option>
+                                <option value="<?= $item['id'] ?>"
+                                    <?= $new_info['type_id'] == $item['id'] ? 'selected' : null ?>>
+                                    <?= $item['title'] ?>
+                                </option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -96,6 +89,7 @@ $smg_type = getFlashData('smg_type');
                         </div> -->
                     </div>
                 </div>
+                <input type="hidden" name="id" value="<?= $id ?>">
                 <button type="submit" class="btn btn-primary mt-2">
                     Lưu
                 </button>

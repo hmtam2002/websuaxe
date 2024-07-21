@@ -8,9 +8,9 @@ if (empty($listNews))
     $smg = setFlashData('smg', 'Không có dữ liệu');
     $smg = setFlashData('smg_type', 'danger');
 }
+
 $smg = getFlashData('smg');
 $smg_type = getFlashData('smg_type');
-
 ?>
 <main id="content" class="col-md-9 ms-auto col-lg-10 px-md-4 py-4">
     <a href="?com=news&act=add" class="btn btn-success mb-4">Thêm bài viết</a>
@@ -38,32 +38,26 @@ $smg_type = getFlashData('smg_type');
                 <td>
                     <?= $dem++ ?>
                 </td>
-                <!-- <td>
-                    <a href="?cmd=new&act=edit&id=<?= $item['id'] ?>">
-                        <img style="max-width: 90px;" src="<?= $func->image_exists($item['image'], 'new') ?>"
-                            alt="Ảnh xem trước">
-                    </a>
-                </td> -->
                 <td><?= $item['new_cat_title'] ?></td>
                 <td>
-                    <a href="?cmd=new&act=edit&id=<?= $item['id'] ?>" class="text-decoration-none text-dark">
+                    <a href="?com=news&act=edit&id=<?= $item['id'] ?>" class="text-decoration-none text-dark">
                         <?= $item['title'] ?>
                     </a>
                 </td>
 
                 <td>
-                    <a href="?cmd=new&act=edit&id=<?= $item['id'] ?>&status=<?= $item['status'] ?>">
+                    <a href="?com=news&act=status&id=<?= $item['id'] ?>&status=<?= $item['status'] ?>">
                         <?= $item['status'] == 1 ? '<button class="btn btn-success btn-sm">Hiện</button>' : '<button class="btn btn-danger btn-sm">Ẩn</button>' ?>
                     </a>
                 </td>
                 <td>
-                    <a href="?cmd=new&act=edit&id=<?= $item['id'] ?>" class=" btn btn-success btn-sm"
+                    <a href="?com=news&act=edit&id=<?= $item['id'] ?>" class=" btn btn-success btn-sm"
                         class="btn btn-warning btn-sm">
                         <i class="fa-solid fa-pen-to-square"></i>
                     </a>
                 </td>
                 <td>
-                    <a href="?cmd=new&act=delete&id=<?= $item['id'] ?>" data_id=" <?= $item['id'] ?>"
+                    <a href="?com=new&act=delete&id=<?= $item['id'] ?>" data_id=" <?= $item['id'] ?>"
                         class="btn btn-danger btn-sm btn-delete">
                         <i class="fa-solid fa-trash"></i>
                     </a>
