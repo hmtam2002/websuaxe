@@ -20,7 +20,7 @@
 <!-- style css -->
 <link rel="stylesheet" href="<?= ASSET ?>css/style.css?ver=<?= rand(10, 99) ?>">
 <link rel="stylesheet" href="<?= ASSET ?>css/responsive.css?ver=<?= rand(10, 99) ?>">
-<link rel="stylesheet" href="<?= ASSET ?>css/custom.css">
+<link rel="stylesheet" href="<?= ASSET ?>css/custom.css?ver=<?= rand(10, 99) ?>">
 
 
 <link rel="stylesheet" href="<?= ASSET . 'css/animate.css' ?>">

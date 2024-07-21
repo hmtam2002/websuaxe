@@ -8,16 +8,6 @@ if ($func->isPOST())
         'content' => $_POST['content'],
         'description' => $filterAll['description']
     ];
-    // $image = $func->upload('imageUpload', 'news');
-
-    // if ($data_update['image'] === 'noimage.jpg')
-    // {
-    //     $data_update['image'] = $image;
-    // }
-    // echo '<pre>';
-    // print_r($data_update);
-    // echo '</pre>';
-    // exit();
     $insertStatus = $db->update('new', $data_update, "type = 'gioi-thieu'");
     if ($insertStatus)
     {

@@ -10,6 +10,11 @@ if ($func->isPOST())
         'content' => $_POST['content'],
         'type_id' => $filterAll['type_id']
     ];
+    $image = $func->upload('imageUpload', 'news');
+    if ($image != 'noimage.jpg')
+    {
+        $data_update['image'] = $image;
+    }
     if ($db->update('new', $data_update, "id = '$id'"))
     {
         setFlashData('smg', 'Cập nhật thành công');
@@ -20,8 +25,6 @@ if ($func->isPOST())
         setFlashData('smg_type', 'danger');
     }
 }
-
-
 
 
 $filterAll = $func->filter();
@@ -78,15 +81,15 @@ $smg_type = getFlashData('smg_type');
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        <!-- <div class="form-group">
+                        <div class="form-group">
                             <label class="form-label fw-bold">Hình ảnh:</label>
                             <input type="file" class="form-control" name="imageUpload" id="imageUpload"
                                 accept="image/*">
                         </div>
                         <div class="form-group">
-                            <img id="previewImage" src="asset/images/news/<?= $gioithieu['image'] ?>"
+                            <img id="previewImage" src="../assets/images/news/<?= $new_info['image'] ?>"
                                 alt="Ảnh xem trước" style="max-width: 100%; max-height: 100%; margin-top: 20px;">
-                        </div> -->
+                        </div>
                     </div>
                 </div>
                 <input type="hidden" name="id" value="<?= $id ?>">

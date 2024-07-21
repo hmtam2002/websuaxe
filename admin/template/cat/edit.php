@@ -43,12 +43,12 @@ $cat_info = $db->oneRaw("SELECT * FROM new_cat WHERE id = '$id'");
                         <div class="form-group mb-3">
                             <label for="slugInput" id="slugLabel" class="fw-bold form-label">Đường dẫn mẫu:
                                 localhost <span>êfè</span> </label>
-                            <input name="slug" id="slugInput" class="form-control" placeholder="Đường dẫn"
+                            <input required name="slug" id="slugInput" class="form-control" placeholder="Đường dẫn"
                                 value="<?= $cat_info['slug'] ?>">
                         </div>
                         <div class="form-group mg-form mb-3">
                             <label for="title" class="form-label fw-bold">Tiêu đề:</label>
-                            <input id="title" name="title" class="form-control" placeholder="Tiêu đề"
+                            <input required id="title" name="title" class="form-control" placeholder="Tiêu đề"
                                 value="<?= $cat_info['title'] ?>">
                         </div>
                     </div>

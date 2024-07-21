@@ -9,7 +9,8 @@ if ($func->isPOST())
         'content' => $_POST['content'],
         'description' => $_POST['description'],
         'type_id' => $filterAll['cat_id'],
-        'create_at' => date('Y-m-d H:i:s')
+        'create_at' => date('Y-m-d H:i:s'),
+        'image' => $func->upload('imageUpload', 'news')
     ];
     // $image = $func->upload('imageUpload', 'news');
 
@@ -52,14 +53,14 @@ $smg_type = getFlashData('smg_type');
                         <div class="form-group mb-3">
                             <label for="slugInput" id="slugLabel" class="fw-bold form-label">Đường dẫn mẫu:
                                 localhost <span>êfè</span> </label>
-                            <input name="slug" id="slugInput" class="form-control" placeholder="Đường dẫn">
+                            <input required name="slug" id="slugInput" class="form-control" placeholder="Đường dẫn">
                             <?php
                             //echo $f->formError('slug', '<span class="error">', '</span>', $errors);
                             ?>
                         </div>
                         <div class="form-group mg-form mb-3">
                             <label for="title" class="form-label fw-bold">Tiêu đề:</label>
-                            <input id="title" name="title" class="form-control" placeholder="Tiêu đề">
+                            <input required id="title" name="title" class="form-control" placeholder="Tiêu đề">
                         </div>
                         <div class="mb-3">
                             <label for="mota" class="form-label fw-bold">Mô tả</label>
@@ -84,15 +85,15 @@ $smg_type = getFlashData('smg_type');
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        <!-- <div class="form-group">
+                        <div class="form-group">
                             <label class="form-label fw-bold">Hình ảnh:</label>
-                            <input type="file" class="form-control" name="imageUpload" id="imageUpload"
-                                accept="image/*">
+                            <input type="file" class="form-control" name="imageUpload" id="imageUpload" accept="image/*"
+                                required>
                         </div>
                         <div class="form-group">
-                            <img id="previewImage" src="asset/images/news/<?= $gioithieu['image'] ?>"
-                                alt="Ảnh xem trước" style="max-width: 100%; max-height: 100%; margin-top: 20px;">
-                        </div> -->
+                            <img id="previewImage" src="../assets/images/noimage/noimage.png" alt="Ảnh xem trước"
+                                style="max-width: 100%; max-height: 100%; margin-top: 20px;">
+                        </div>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary mt-2">Lưu</button>
